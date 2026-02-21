@@ -18,8 +18,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="font-[Outfit] bg-slate-50 min-h-screen">
-    <header class="xs:bg-blue-300 p-2 sm:p-4 md:p-5 lg:p-10 xl:p-14">
+<body class="font-[Outfit] bg-slate-50 min-h-screen py-3">
+    <header class="xs:bg-blue-300 w-11/12 mx-auto">
         <h1 class="text-xl sm:text-2xl md:text-3xl font-bold opacity-80 mb-5">Job Application Tracker</h1>
         <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="bg-white shadow-sm p-4 rounded-sm">
@@ -36,22 +36,37 @@
             </div>
         </section>
     </header>
-    <hr class="text-gray-300 w-11/12 m-auto">
-    <main class="mt-6 w-11/12 mx-auto border border-red-200">
+    <hr class="text-gray-300 w-11/12 m-auto mt-10">
+    <main class="mt-8 w-11/12 mx-auto">
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-bold">Available Jobs</h2>
             <h3 class="text-lg font-bold opacity-70"><span>8</span><span>Jobs</span></h3>
         </div>
         <div id="buttons-container">
-            <button class="btn bg-blue-500 text-white text-md font-bold border-none">Acceptedd</button>
-            <button class="btn bg-blue-500 text-white text-md font-bold border-none">Acceptedd</button>
-            <button class="btn bg-blue-500 text-white text-md font-bold border-none">Acceptedd</button>
+            <button class="btn bg-blue-500 w-28 text-white text-[16px] font-medium border-none">All</button>
+            <button class="btn bg-blue-500 w-28 text-white text-[16px] font-medium border-none">Interview</button>
+            <button class="btn bg-blue-500 w-28 text-white text-[16px] font-medium border-none">Rejeceted</button>
         </div>
-        <section class="border p-10 mt-6">
-            <div class="border p-4 rounded-sm">
-
+        <!-- job application card container -->
+        <section class="mt-6">
+            <div class="p-4 rounded-md bg-white shadow-md flex items-center justify-between">
+                <div class="">
+                    <h3 class="text-xl font-bold opacity-80">Mobile first Crop</h3>
+                    <h4 class="text-lg font-medium opacity-60 mb-5 mt-2">React Native Developer</h4>
+                    <h5 class="opacity-60">Remote . Full-Time . $23000 - $26000</h5>
+                    <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5">Not Applied</button>
+                    <p class="text-gray-700 mb-5">Create stunning web experiences for high-profile clients. Must have
+                        portfolio and experience with modern web design trends.</p>
+                    <button
+                        class="btn border-green-500 text-[16px] font-semibold  uppercase text-green-500">Interview</button>
+                    <button
+                        class="btn border-red-500 text-[16px] font-semibold ml-2 uppercase text-red-500">Rejected</button>
+                </div>
+                <button class="hover:text-red-500 duration-300 cursor-pointer p-5">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
             </div>
-        </section>        
+        </section>
     </main>
 
     <!-- javascript files added here -->
