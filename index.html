@@ -24,7 +24,7 @@
         <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="bg-white shadow-sm p-4 rounded-sm">
                 <strong class="font-normal text-sm">Total</strong>
-                <h3 class="mt-1 text-2xl font-bold">7</h3>
+                <h3 id="total_job" class="mt-1 text-2xl font-bold"></h3>
             </div>
             <div class="bg-white shadow-sm p-4 rounded-sm">
                 <strong class="font-normal text-sm">Interview</strong>
@@ -38,32 +38,36 @@
     </header>
     <hr class="text-gray-300 w-11/12 m-auto mt-10">
     <main class="mt-8 w-11/12 mx-auto">
+        <!-- avialable job part -->
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-bold">Available Jobs</h2>
-            <h3 class="text-lg font-bold opacity-70"><span>8</span><span>Jobs</span></h3>
+            <h3 class="text-lg font-bold opacity-70"><span id="available_job"></span><span>Jobs</span></h3>
         </div>
-        <div id="buttons-container">
-            <button class="btn bg-blue-500 w-28 text-white text-[16px] font-medium border-none">All</button>
-            <button class="btn bg-blue-500 w-28 text-white text-[16px] font-medium border-none">Interview</button>
-            <button class="btn bg-blue-500 w-28 text-white text-[16px] font-medium border-none">Rejeceted</button>
+        <!-- job appliation filter tabs -->
+        <div id="buttons_container" class="flex items-center gap-2">
+            <button id="all_tab"
+                class="btn btn_tab bg-blue-500 text-white w-28 text-[16px] font-medium border-none">All</button>
+            <button id="interview_tab"
+                class="btn btn_tab w-28 text-[16px] bg-white shadow-sm font-medium border-none">Interview</button>
+            <button id="rejected_tab"
+                class="btn btn_tab w-28 text-[16px] bg-white shadow-sm font-medium border-none">Rejeceted</button>
         </div>
         <!-- job application card container -->
-        <section id="card_container" class="mt-6 grid grid-cols-1 gap-5">
-        </section>
+        <section id="all_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
+        <section id="interview_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
+        <section id="rejected_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
 
         <!-- no jobs container -->
-         <section class="bg-white shadow-sm rounded-md my-4 text-center p-44">
+         
+        <section class="bg-white shadow-sm rounded-md my-4 text-center p-44 hidden">
             <img src="./images/document.png" alt="" class="mx-auto">
             <h2 class="text-2xl font-bold opacity-80 my-3">No Jobs Available</h2>
             <p class="text-gray-700">Check back soon for new job opportunities</p>
-         </section>
-
-         <!-- apatoto card container -->
-          <!-- <section id="card_container" class="border p-4 rounded-md"></section> -->
+        </section>
     </main>
 
     <!-- javascript files added here -->
-     <script src="./script.js"></script>
-</body> 
+    <script src="./script.js"></script>
+</body>
 
 </html>

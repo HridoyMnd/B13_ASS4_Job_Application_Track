@@ -92,27 +92,147 @@ const jobs = [
 ];
 
 // all logic added below
-const cardContainer = document.getElementById("card_container");
+const allTab = document.getElementById("all_tab")
+const interviewTab = document.getElementById("interview_tab")
+const rejectedTab = document.getElementById("rejected_tab")
+const totalJob = document.getElementById("total_job");
+totalJob.innerText = jobs.length;
+const availableJob = document.getElementById("available_job")
+availableJob.innerText = jobs.length;
+const allCardContainer = document.getElementById("all_card_container");
+const interviewCardContainer = document.getElementById("interview_card_container");
+const rejectedCardContainer = document.getElementById("rejected_card_container");
+
+// data show
+// const allData = document.createElement('h2');
+// allData.innerText = "All Data";
+
+const interviewDatas = [];
+const rejectedDatas = [];
+
+// interview data show logic
+if (interviewDatas.length === 0) {
+  const section = document.createElement("section");
+  section.classList.add("bg-white", "shadow-sm", "rounded-md", "my-4", "text-center", "p-44")
+  section.innerHTML = `<img src="./images/document.png" alt="" class="mx-auto">
+            <h2 class="text-2xl font-bold opacity-80 my-3">No Jobs Available</h2>
+            <p class="text-gray-700">Check back soon for new job opportunities</p>`;
+  interviewCardContainer.append(section);
+} else {
+  for (const interviewData of interviewDatas) {
+    const card = document.createElement("div");
+    card.innerHTML = `
+              <div class="p-4 rounded-md bg-white shadow-sm flex items-center justify-between">
+                  <div class="">
+                      <h3 class="text-xl font-bold opacity-80">${interviewData.companyName}</h3>
+                      <h4 class="text-lg font-medium opacity-60 mb-5 mt-2">${interviewData.position}</h4>
+                      <h5 class="opacity-60"><span>${interviewData.location} . </span><span>${interviewData.type} . </span><span>${interviewData.salary} . </span></h5>
+                      <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5">Not Applied</button>
+                      <p class="text-gray-700 mb-5">${interviewData.description}</p>
+                      <button
+                          class="btn border-green-500 text-[16px] font-semibold  uppercase text-green-500">Interview</button>
+                      <button
+                          class="btn border-red-500 text-[16px] font-semibold ml-2 uppercase text-red-500">Rejected</button>
+                  </div>
+                  <button class="hover:text-red-500 duration-300 cursor-pointer p-5">
+                      <i class="fa-solid fa-trash"></i>
+                  </button>
+              </div>
+        `
+  }
+}
+
+// rejected data show logic
+if (rejectedDatas.length === 0) {
+  const section = document.createElement("section");
+  section.classList.add("bg-white", "shadow-sm", "rounded-md", "my-4", "text-center", "p-44")
+  section.innerHTML = `<img src="./images/document.png" alt="" class="mx-auto">
+            <h2 class="text-2xl font-bold opacity-80 my-3">No Jobs Available</h2>
+            <p class="text-gray-700">Check back soon for new job opportunities</p>`;
+  rejectedCardContainer.append(section);
+} else {
+  for (const rejectedData of rejectedDatas) {
+    const card = document.createElement("div");
+    card.innerHTML = `
+              <div class="p-4 rounded-md bg-white shadow-sm flex items-center justify-between">
+                  <div class="">
+                      <h3 class="text-xl font-bold opacity-80">${rejectedData.companyName}</h3>
+                      <h4 class="text-lg font-medium opacity-60 mb-5 mt-2">${rejectedData.position}</h4>
+                      <h5 class="opacity-60"><span>${rejectedData.location} . </span><span>${rejectedData.type} . </span><span>${rejectedData.salary} . </span></h5>
+                      <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5">Not Applied</button>
+                      <p class="text-gray-700 mb-5">${rejectedData.description}</p>
+                      <button
+                          class="btn border-green-500 text-[16px] font-semibold  uppercase text-green-500">Interview</button>
+                      <button
+                          class="btn border-red-500 text-[16px] font-semibold ml-2 uppercase text-red-500">Rejected</button>
+                  </div>
+                  <button class="hover:text-red-500 duration-300 cursor-pointer p-5">
+                      <i class="fa-solid fa-trash"></i>
+                  </button>
+              </div>
+        `
+  }
+}
+
+// const rejectedData = document.createElement('h2');
+// rejectedData.innerText = "Rejected Data";
+interviewCardContainer.append(interviewDatas);
+rejectedCardContainer.append(rejectedDatas);
+
+// application data filter
+interviewCardContainer.classList.add("hidden")
+rejectedCardContainer.classList.add("hidden")
+interviewTab.addEventListener("click", () => {
+  interviewCardContainer.classList.remove("hidden")
+  allCardContainer.classList.add("hidden")
+  rejectedCardContainer.classList.add("hidden")
+})
+rejectedTab.addEventListener("click", () => {
+  rejectedCardContainer.classList.remove("hidden")
+  allCardContainer.classList.add("hidden")
+  interviewCardContainer.classList.add("hidden")
+})
+allTab.addEventListener("click", () => {
+  allCardContainer.classList.remove("hidden")
+  rejectedCardContainer.classList.add("hidden")
+  interviewCardContainer.classList.add("hidden")
+})
+
 
 for (const job of jobs) {
   const card = document.createElement("div");
   card.innerHTML = `
               <div class="p-4 rounded-md bg-white shadow-sm flex items-center justify-between">
-                <div class="">
-                    <h3 class="text-xl font-bold opacity-80">${job.companyName}</h3>
-                    <h4 class="text-lg font-medium opacity-60 mb-5 mt-2">${job.position}</h4>
-                    <h5 class="opacity-60"><span>${job.location} . </span><span>${job.type} . </span><span>${job.salary} . </span></h5>
-                    <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5">Not Applied</button>
-                    <p class="text-gray-700 mb-5">${job.description}</p>
-                    <button
-                        class="btn border-green-500 text-[16px] font-semibold  uppercase text-green-500">Interview</button>
-                    <button
-                        class="btn border-red-500 text-[16px] font-semibold ml-2 uppercase text-red-500">Rejected</button>
-                </div>
-                <button class="hover:text-red-500 duration-300 cursor-pointer p-5">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </div>
-      `
-    cardContainer.append(card);
+                  <div class="">
+                      <h3 class="text-xl font-bold opacity-80">${job.companyName}</h3>
+                      <h4 class="text-lg font-medium opacity-60 mb-5 mt-2">${job.position}</h4>
+                      <h5 class="opacity-60"><span>${job.location} . </span><span>${job.type} . </span><span>${job.salary} . </span></h5>
+                      <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5">Not Applied</button>
+                      <p class="text-gray-700 mb-5">${job.description}</p>
+                      <button
+                          class="btn border-green-500 text-[16px] font-semibold  uppercase text-green-500">Interview</button>
+                      <button
+                          class="btn border-red-500 text-[16px] font-semibold ml-2 uppercase text-red-500">Rejected</button>
+                  </div>
+                  <button class="hover:text-red-500 duration-300 cursor-pointer p-5">
+                      <i class="fa-solid fa-trash"></i>
+                  </button>
+              </div>
+        `
+  allCardContainer.append(card);
+}
+
+//active button tab logic here 
+const buttons = document.getElementsByClassName("btn_tab");
+for (const button of buttons) {
+  button.addEventListener("click", () => {
+    for (const btn of buttons) {
+      btn.classList.remove("bg-blue-500", "text-white");
+      btn.classList.add("bg-white", "shadow-sm")
+    }
+
+    button.classList.remove("bg-white", "shadow-sm");
+    button.classList.add("bg-blue-500", "text-white")
+
+  })
 }
